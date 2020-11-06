@@ -1,0 +1,13 @@
+<% books.forEach(function(book) { %>
+
+<span class="story">
+  <span class="card">
+    <img src="book/<%=book.id %>.png" alt="test" />
+    <div class="title">
+      <h4><book.title></h4>
+      <h5><book.genre></h5>
+    </div>
+  </span>
+</span>
+
+<% }); %>

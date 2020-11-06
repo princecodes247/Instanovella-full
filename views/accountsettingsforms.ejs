@@ -1,0 +1,175 @@
+<link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/settings.css"
+      type="text/css"
+      media="all"
+    />
+    <title>Account Settings</title>
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main>
+      <%- include('partials/settingsnav', {page: "Account"}) %>
+      <%if(form === "username"){%>
+      <form action="/settings/account/username" method="POST">
+
+          <label for="username">
+            <p>Username</p>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value=""
+            />
+          </label>
+          
+          <label for="password">
+            <input type="password" name="password" id="password">
+          </label>
+          <button class="btn" type="submit">Change</button>
+      </form>
+      <%}%>
+      <%if(form === "email"){%>
+      <form action="/settings/account/email" method="post">
+        <label for="email">
+          <p>Email</p>
+          <input type="email" name="email" id="email" value="" />
+        </label>
+        <label for="password">
+          <input type="password" name="password" id="password">
+        </label>
+        <button class="btn" type="submit">Change Email</button>
+      
+      </form>
+      <%}%>
+      <%if(form === "gender"){%>
+        <form action="/settings/account/gender" method="post">
+        <label for="gender">
+          <p>Name</p>
+          <select name="gender" id="gender">
+            <option value="He">He</option>
+            <option value="She">She</option>
+            <option value="They">They</option>
+            <option value="It">It</option>
+            <option value="None">Rather not say</option>
+          </select>
+        </label>
+        <label for="password">
+          <input type="password" name="password" id="password">
+        </label>
+        <button class="btn" type="submit">Submit</button>
+      </form>
+      <%}%>
+      <%if(form === "birthday"){%>
+        <form action="/settings/account/birthday" method="post">
+        <label for="birthday">
+          <p>Birthday</p>
+          <input type="date" name="birthday" id="birthday" />
+        </label>
+        <label for="password">
+          <input type="password" name="password" id="password">
+        </label>
+        <button class="btn" type="submit">Change</button>
+      </form>
+      <%}%>
+      
+      <%if(form === "blh"){%>
+<form action="">
+    <section id="account-sect">
+      <div class="input-holder">
+        <span id="user-pic">
+          <img src="./user_icon.png" alt="" />
+        </span>
+        <label for="profile-pic">
+          <div class="a">
+            <p>Profile Picture</p>
+            <p><small>Tap to change</small></p>
+          </div>
+          <input type="file" name="profile-pic" id="profile-pic" />
+        </label>
+      </div>
+      <div class="input-holder">
+        <span id="user-pic">
+          <img src="./user_icon.png" alt="" />
+        </span>
+        <label for="background-pic">
+          <div class="a">
+            <p>Background</p>
+            <p><small>Tap to change</small></p>
+          </div>
+          <input
+            class="none"
+            type="file"
+            name="background-pic"
+            id="background-pic"
+          />
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="username">
+          <p>Username</p>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value=""
+          />
+          <button class="btn" type="button">change</button>
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="name">
+          <p>Full Name</p>
+          <input type="text" name="name" id="name" value="Prince Codes" />
+          <button type="button">Change Name</button>
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="email">
+          <p>Email</p>
+          <input type="email" name="email" id="email" value="" />
+          <button type="button">Change Email</button>
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="gender">
+          <p>Name</p>
+          <select name="gender" id="gender">
+            <option value="M">Male</option>
+            opt+
+          </select>
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="birthday">
+          <p>Birthday</p>
+          <input type="date" name="birthday" id="birthday" />
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="location">
+          <p>Change Location</p>
+          <input type="location" name="location" id="location" value="" />
+        </label>
+      </div>
+      <div class="input-holder">
+        <label for="website">
+          <p>Website</p>
+          <input type="website" name="website" id="website" value="" />
+        </label>
+      </div>
+    </section>
+  </form>
+  <%}%>
+</main>
+<%- include('partials/menu') %>
+

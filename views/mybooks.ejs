@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/css/navbar.css" />
+<link
+rel="stylesheet"
+href="/css/search.css"
+type="text/css"
+media="all"
+/>
+    <title>My Books</title>
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main>
+    <div class="stories">
+      
+      
+    <% if( user.books.length > 0){ %>
+        <% user.books.forEach(book => { %>
+          <span class="list-item">
+            <a href="/books/<%= book.id%>" class="pic">
+              <img src="<%=book.coverURL%>" alt=""/>
+            </a>
+            <div class="details">
+              
+                <span class="metrics">
+                  <p><small>
+                    <%= book.reads.length %>
+                  </small></p>
+                  <p><small>
+                    <%= book.stars.length %>
+                  </small></p>
+                </span>
+                <p>
+                  <%= book.title %>
+                </p>
+              
+              
+            <p><%= book.desc %></p>
+          
+            <a href="/books/<%= book.id %>/add">
+              <button type="submit"  class="btn">Add a new chapter</button>
+            </a>
+          </div>  
+        
+          </span>
+        <% }) %>
+    
+        <%} else {%>
+          <h2>No books yet...</h2>
+          <% } %>
+    </div>
+    <a href="/createbook"><button class="btn">Create book</button></a>
+  </main>
+    <%- include('partials/menu') %>
+    <script src="/js/mybooks.js"></script>
+      </body>
+</html>

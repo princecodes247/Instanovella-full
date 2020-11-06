@@ -1,0 +1,85 @@
+<title><%=book.title%> - Book</title>
+<link
+  rel="stylesheet"
+  href="/css/story-style.css"
+  type="text/css"
+  media="all"
+/>
+<link rel="stylesheet" href="/css/navbar.css" />
+    
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main id="bookpage">
+      <div id="backdrop" style="background: url(<%= book.coverURL %>); background-position-y: center; background-repeat: no-repeat; background-size: 100%;"></div>
+      <section id="intro">
+        <img src="<%= book.coverURL %>" alt="g" />
+        <h2><%= book.title %></h2>
+        <div id="story-analytics-sub">
+          <p id="reads">
+            <sub> <%= book.reads.length %> Reads </sub>
+          </p>
+          <p id="stars">
+            <sub> <%= book.stars.length %> Stars </sub>
+          </p>
+          <p id="parts">
+            <sub> <%= book.chapters.length %> Part Story </sub>
+          </p>
+        </div>
+        <div id="book-author" class="center">
+          <img src="/assets/user_icon.png" alt="g" />
+          <p>
+            <b>
+              <p><%= book.author %></p>
+            </b>
+          </p>
+        </div>
+        <div id="ranking">
+          <div id="rank">a</div>
+          <p>#1 - romance</p>
+        </div>
+      </section>
+      <section class="center" id="read-story-btns">
+        <button class="btn" type="button"  id="star-btn">
+          <% if( book.stars.includes(user.id)){%>
+            Unstar
+            <%} else {%>
+              Star
+              <%}%>
+        </button>
+        <button class="btn" type="submit">+</button>
+      </section>
+      <section id="story-desc">
+        <p>
+          <%= book.desc %>
+        </p>
+        <div id="tags">
+          <% book.tags.forEach((tag)=> { %> 
+          <div class="tag"><%= tag %></div>
+          <%}) %>
+          
+        </div>
+      </section>
+      <section>
+        <div id="chapters-list">
+          <div id="chapters-top">
+            <h2>Chapters</h2>
+            <button class="btn" id="open-content" type="submit">^</button>
+          </div>
+          <ol id="chapters-bottom">
+            <% book.chapters.forEach((chapter)=> { %> 
+              <li class="chapter">
+                <a href="/books/<%= book.id %>/<%= book.chapters.indexOf(chapter)+1 %>">
+                  <p><%= chapter.title %></p>
+                </a>
+              </li>
+              <%}) %>
+            </ol>
+          </div>
+        </section>
+        <section></section>
+        
+    </main>
+    <%- include('partials/menu') %>
+<script src="/js/starBook.js"></script>

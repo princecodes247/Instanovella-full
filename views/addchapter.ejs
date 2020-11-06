@@ -1,0 +1,46 @@
+
+    <link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <title>Add A Chapter</title>
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main style="max-height: 110vh; overflow: hidden">
+      <section class="intro">
+        <h1>Add a part</h1>
+        <form style="width: 90vw" action="/books/<%=book.id%>/add" method="POST" accept-charset="utf-8">
+          <label for="part-title">Title</label>
+          <input
+            class="top-curve"
+            type="text"
+            name="title"
+            id="part-title"
+          />
+
+          <label for="part-story">Story</label>
+
+          <textarea
+            placeholder="Start writing here now..."
+            class="input bottom-curve"
+            name="story"
+            id="part-story"
+            rows="20"
+            cols="40"
+          ></textarea>
+          <input
+            type="submit"
+            name="publish"
+            class="btn form-btn"
+            value="Publish"
+          />
+        </form>
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+

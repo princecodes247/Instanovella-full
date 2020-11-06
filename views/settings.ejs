@@ -1,0 +1,68 @@
+
+    <title>Settings</title>
+    
+    <link rel="stylesheet" href="./css/navbar.css" />
+    
+    <link rel="stylesheet" href="./css/form.css" />
+    <link rel="stylesheet" href="/css/settings.css" />
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main>
+
+      <section id="settings-sect">
+        <div class="setting">
+          <a href="/settings/account">
+          <div class="setting-title">
+            <h4>Account Settings</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              Update personal information. Names, phone numbers, email addresses
+              and other details.
+            </p>
+          </span>
+          <span class="menu-options"></span>
+          </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/security">
+          <div class="setting-title">
+            <h4>Security and Privacy Settings</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              Change password, take security actions and control what people see
+              about you
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/notifications">
+          <div class="setting-title">
+            <h4>Notification Settings</h4>
+          </div>
+          <span class="setting-body">
+            <p>Configure how you want to recieve info and news</p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/themes">
+          <div class="setting-title">
+            <h4>Look and Feel</h4>
+          </div>
+          <span class="setting-body">
+            <p>Design and choose the look and feel of account</p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+ 

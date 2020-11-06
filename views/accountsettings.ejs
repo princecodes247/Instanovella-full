@@ -1,0 +1,91 @@
+<link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/settings.css"
+      type="text/css"
+      media="all"
+    />
+    <title>Account Settings</title>
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main>
+      <%- include('partials/settingsnav', {page: "Account"}) %>
+      <section id="settings-sect">
+        <div class="setting">
+          <a href="/settings/account/picture">
+          <div class="setting-title">
+            <h4>Profile Picture and Background</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%=user.name%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+          </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/account/username">
+          <div class="setting-title">
+            <h4>Username</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%=user.name%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+          </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/account/email">
+          <div class="setting-title">
+            <h4>Email Address</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%=user.email%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/account/phone">
+          <div class="setting-title">
+            <h4>Phone Number</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%if(user.phone){%>
+                <%= user.phone%>
+                <%}%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/account/manageaccount">
+          <div class="setting-title">
+            <h4>Manage Account</h4>
+          </div>
+          <span class="setting-body">
+            <p>Legacy Contact and Deactivation</p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+

@@ -1,0 +1,101 @@
+
+    <title>Settings - Security</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/button.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/settings.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+
+
+    <%- include('partials/header') %>
+    <main>
+
+      <%- include('partials/settingsnav', {page: "Security"}) %>
+      <section id="settings-sect">
+        <div class="setting">
+          <a href="/settings/security/password">
+          <div class="setting-title">
+            <h4>Change Password</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              ****
+            </p>
+          </span>
+          <span class="menu-options"></span>
+          </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/security/recovery">
+          <div class="setting-title">
+            <h4>Recovery Setups</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              Improveyour security by including ways  we can verify thats it's you
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+
+      </section>
+      <form action="">
+        <section id="account-sect">
+          <div class="input-holder">
+            <label for="password">
+              <p>Change Password</p>
+              <input type="password" name="password" id="password" value="" />
+              <button class="btn" type="button">change</button>
+            </label>
+          </div>
+          <div class="input-holder">
+            <label for="name">
+              <p>Full Name</p>
+              <input
+                type="email"
+                name="rec-email"
+                id="rec-email"
+                value="Prince Codes"
+              />
+              <button type="button">Set recovery email address</button>
+            </label>
+          </div>
+
+          <div class="input-holder">
+            <label for="appear-offline">
+              <p>Appear Offline</p>
+              <input
+                type="checkbox"
+                name="appear-offline"
+                id="appear-offline"
+              />
+            </label>
+          </div>
+          <div class="input-holder">
+            <label for="website">
+              <p>Blocked Accounts</p>
+            </label>
+          </div>
+        </section>
+      </form>
+
+    </main>
+    <%- include('partials/menu') %>
+

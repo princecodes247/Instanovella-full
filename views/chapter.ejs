@@ -1,0 +1,37 @@
+
+    <link
+    rel="stylesheet"
+    href="/css/navbar.css"
+    type="text/css"
+    media="all"
+  />
+  <title>Add A Chapter</title>
+  <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+</head>
+
+
+  <%- include('partials/header') %>
+  <main style="max-height: 110vh; overflow: hidden">
+    <section class="intro">
+      <h1><%= chapterTitle %></h1>
+      <div>
+        <p>
+            <%= story %>
+        </p>
+      </div>
+      <div>
+          <button  <% if(first){%> class="btn disabled" disabled <% } else{ %> class="btn" <% } %> 
+              >
+                Previous
+               
+          </button>
+          <p><%= last %></p>
+          <button  <% if(last){%> class="btn disabled" disabled <% } else{ %> class="btn" <% } %> 
+              >
+              Next
+          </button>
+      </div>
+    </section>
+  </main>
+  <%- include('partials/menu') %>
+

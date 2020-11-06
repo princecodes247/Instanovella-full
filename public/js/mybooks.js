@@ -1,0 +1,1 @@
+alert(res.user.name)

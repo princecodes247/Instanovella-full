@@ -1,0 +1,47 @@
+
+    <title><%=genre%></title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/search.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+ 
+  
+    <%- include('partials/header') %>
+
+    
+    <main>
+      <section>
+        <%if(books.length !== 0){%>
+          <% books.forEach(book => {%>
+            <div class="book">
+              <a href="/books/<%= book.id%>" class="pic">
+                <img src="<%=book.coverURL%>" alt="">
+              </a>
+              <a href="/books/<%= book.id%>">
+
+                <span class="details">
+                  <p><sub><%=book.stars.length%></sub></p>
+                  <p><sub><%=book.reads.length%></sub></p>
+                  
+                </span>
+                
+                <span class="title"><%=book.title%></span>
+                <span class="genre"><%=book.author%></span>
+                <span class="genre"><%=book.genre%></span>
+              </a>
+            </div>
+          
+          <%})} else {%>
+        <p>No results</p>
+        <%}%>
+          
+      </section>
+
+      <div id="result-list">
+        <div id="books">

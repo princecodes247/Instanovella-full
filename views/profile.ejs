@@ -1,0 +1,248 @@
+
+    <title><%=person.name %> - Profile</title>
+    <link rel="stylesheet" href="/css/story-style.css" />
+    <link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+  </head>
+  
+    <%- include('partials/header') %>
+    <main>
+      <section class="user-info">
+        <nav id="user-settings"></nav>
+        <div id="user-details">
+          <div style="overflow: hidden" class="user-pic">
+            <img src="/assets/user_icon.png" alt="1" />
+          </div>
+
+          <h3><%= person.name %></h3>
+          <h5>@<%= person.name %></h5>
+        </div>
+        <div class="user-stats">
+          <span>
+            <p><%= person.books.length %></p>
+            <p>Works</p>
+          </span>
+          <span>
+            <p><%= person.following.length %></p>
+            <p>Following</p>
+          </span>
+          <span id="followers">
+            <p id="followers-num"><%= person.followers.length %></p>
+            <p>Followers</p>
+          </span>
+        </div>
+        <input class="btn" id="follow-btn" type="button" value=<%=person.followers.includes(user.id) ? "Unfollow" : "Follow" %> />
+      </section>
+      <section id="about-sect">
+        <nav class="navi">
+          <input type="radio" name="about-nav" id="about-btn" checked />
+          <label for="about-btn"
+            ><p>About</p>
+            <span></span>
+          </label>
+
+          <input type="radio" name="about-nav" id="messages-btn" />
+          <label for="messages-btn"
+            ><p>Messages</p>
+            <span></span>
+          </label>
+        </nav>
+        <article id="about">
+          <div class="desc close">
+            <p>
+              <%=person.details.bio%>
+            </p>
+          </div>
+        
+
+        <input class="btn alt-btn" type="button" value="Show More" />
+
+        <div class="stories-by">
+          <h2>Stories By</h2>
+          <%if(person.books.length !== 0){%>
+            <h5><%= person.books.length %> published stories</h5>
+              <% person.books.forEach(book => {%>
+                <div class="list-item book">
+                  <a href="/books/<%= book.id%>" class="pic">
+                    <img src="<%=book.coverURL%>" alt="">
+                  </a>
+                  <a href="/books/<%= book.id%>">
+  
+                    <span class="details">
+                      <span class="metrics">
+                        <p><sub><%=book.stars.length%></sub></p>
+                      <p><sub><%=book.reads.length%></sub></p>
+                      
+                      </span>  
+                      <span class="title"><%=book.title%></span>
+                      <span class="genre"><%=book.author%></span>
+                      <span class="genre"><%=book.genre%></span>
+                    </span>
+                  </a>
+                </div>
+                <%})} else {%>
+                  <p>No published stories</p>
+                  <%}%>
+            
+        </div>
+        <div class="following"></div>
+        <div class="share"></div>
+        <div class="last-message"></div>
+        <div class="reading-list"></div>
+      </article>
+      <article id="messages-cont">
+        <form action="<%=person.id%>/sendmessage" method="POST" class="send-message-cont">
+          <div class="user-pic">
+            <img src="/assets/user_icon.png" alt="1" />
+          </div>
+          <textarea
+            name="message"
+            class="input send-message"
+            cols="10"
+            rows="10"
+            placeholder="Send a message"
+          ></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <div class="messages">
+          <% person.messages.forEach(message =>{%> 
+            
+            <span class="message">
+              <div class="message-header">
+                <div class="user-pic">
+                  <img src="<%=message.head.avatar%>" alt="" />
+                </div>
+                <div class="message-header-details">
+                  <h3><%=message.head.name%></h3>
+                  <% let time = Math.trunc((Date.now()-message.head.date)/1000)%>
+                  <% let minutes = Math.trunc(time/60)%>
+                  <%let hours = Math.trunc(time/3600)%>
+                  <%let days = Math.trunc(time/86400)%>
+                  <h5>
+                    <%if(time > 60) {%>
+                      <%if(minutes === 1){%>
+                        a minute ago
+                      <%}else if(minutes < 10){%>
+                        a few minutes ago
+                      <%}else{%>
+                        <%=minutes%> minutes ago%>
+                      <%}%>
+                    <%} else if(time > 3600){%>
+                      <%if(hours === 1){%>
+                        an hour ago
+                      <%}else{%>
+                        <%=hours%> hours ago%>
+                    <%}%>
+                    <%} else if(time > 86400){%>
+                      <%if(days === 1){%>
+                        a day ago
+                      <%} else{%>
+                        <%=days%> days ago%>
+                    <%}%>
+                    <%} else {%>
+                      <%if(time === 1){%>
+                        a second ago
+                      <%}else if(time < 10){%>
+                        a few seconds ago
+                      <%}else{%>
+                        <%=time%> seconds ago%>
+                      <%}%>
+                    <%}%>
+
+                  </h5>
+                </div>
+                <div class="message-options"></div>
+              </div>
+              <div class="message-text close">
+                <p>
+                  <%=message.body%>
+                </p>
+              </div>
+              <div class="replies">
+                <%message.replies.forEach(reply => {%>
+                <div class="reply">
+                  <div class="reply-header">
+                    <div class="user-pic">
+                      <img src="<%=reply.head.avatar%>" alt="" />
+                    </div>
+                  </div>
+                  <div class="reply-text">
+                    <div class="top">
+                      <div class="reply-name">
+                        <h3><%=reply.head.name%></h3>
+                      </div>
+                      <div class="message-options">M</div>
+                    </div>
+                    <div class="">
+                      <p><%=reply.body%></p>
+                      <span class="reply-details">
+                        <% let time = Math.trunc((Date.now()-reply.head.date)/1000)%>
+                        <% let minutes = Math.trunc(time/60)%>
+                        <%let hours = Math.trunc(time/3600)%>
+                        <%let days = Math.trunc(time/86400)%>
+                        <h5>
+                          <%if(time > 60) {%>
+                            <%if(minutes === 1){%>
+                              a minute ago
+                            <%}else if(minutes < 10){%>
+                              a few minutes ago
+                            <%}else{%>
+                              <%=minutes%> minutes ago%>
+                            <%}%>
+                          <%} else if(time > 3600){%>
+                            <%if(hours === 1){%>
+                              an hour ago
+                            <%}else{%>
+                              <%=hours%> hours ago%>
+                          <%}%>
+                          <%} else if(time > 86400){%>
+                            <%if(days === 1){%>
+                              a day ago
+                            <%} else{%>
+                              <%=days%> days ago%>
+                          <%}%>
+                          <%} else {%>
+                            <%if(time === 1){%>
+                              a second ago
+                            <%}else if(time < 10){%>
+                              a few seconds ago
+                            <%}else{%>
+                              <%=time%> seconds ago%>
+                            <%}%>
+                          <%}%>
+      
+                          |</h5>
+                        <h5><a href="#">reply</a></h5>
+                      </span>
+                    </div>
+                  </div>
+                  </div>
+                  <%})%>
+                </div>
+                <form action="<%=person.id + '/message/' + person.messages.indexOf(message) + '/reply'%>" method="post">
+                  <textarea
+                  name="reply"
+                  class="input reply"
+                  cols="10"
+                  rows="2"
+                  >
+    Send a message</textarea>
+                  <button type="submit">Send</button>
+                </form>
+                </span>
+
+<%})%>
+          
+        </div>
+      </article>
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+    <script src="/js/follow.js"></script>
+  

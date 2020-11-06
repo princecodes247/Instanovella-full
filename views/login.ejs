@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/navbar2.css" />
+<link rel="stylesheet" href="/css/form.css" />
+<title>Login - Instanovella</title>
+</head>
+<body class="container light">
+<header style="height: 8vh;">
+  Instanovella
+
+</header>
+<main style="height: 81.45vh; padding: 0;">
+ 
+  <section class="intro" id="form-holder" >
+  <h1 style=" margin-bottom: 10vh" class="form-ad">Login</h2>
+    <%- include('partials/messages') %>
+<form id="login-form" action="/users/login" method="post">
+    <label for="name">Username</label>
+    <input type="text" name="name" id="name">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+ <input class="btn form-btn" type="submit" value=" Submit " style="padding: auto 100px">
+</form>
+<p style="margin-top: 80px; height: 100px">Don't have an account? Sign up <a href="/users/register">here</a></p>
+
+</section>
+</main>
+
+    

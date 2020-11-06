@@ -1,0 +1,60 @@
+
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="/css/createbook.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+  <%- include('partials/header') %>
+  
+
+    <main>
+      <section class="intro" style="margin-top: 8vh">
+        <h1>Create</h1>
+        <%- include('partials/messages') %>
+        <form id="create-form" action="/books/create" method="POST" accept-charset="utf-8" >
+          
+          <label for="bcover">Book Cover</label>
+          <label class="file"></label>
+            <input type="file" id="bcover" name="bcover" aria-label="File browser example" />
+            <span class="file-custom"></span>
+          </label>
+          
+          <label for="title">Story Title</label>
+          <input type="text" name="title" id="title" required />
+
+          <label for="desc">Story Description</label>
+          <input type="text" name="desc" id="desc" required />
+
+          <label for="genre">Story Genre</label>
+          <input type="text" name="genre" id="genre" required />
+
+          <textarea
+            class="form"
+            name="tags"
+            id="tags"
+            cols="30"
+            rows="10"
+          ></textarea>
+
+          <select name="copyright" id="copyright"></select>
+          <select name="advanced" id="advanced">
+            <option value=""></option>
+            opt+
+          </select>
+
+
+          <input
+            class="btn form-btn"
+            type="submit"
+            name="create"
+            id="create"
+            value="Create"
+          />
+        </form>
+      </section>
+    </main>
+    <%- include('partials/menu') %>

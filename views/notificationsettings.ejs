@@ -1,0 +1,125 @@
+
+    <title>Settings - Security</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/navbar.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/button.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/settings.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+
+  
+    <%- include('partials/header') %>
+    <main>
+      <%- include('partials/settingsnav', {page: "Notification"}) %>
+      <section id="settings-sect">
+        <div class="setting">
+          <a href="/settings/notifications/posts">
+          <div class="setting-title">
+            <h4>Posts</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%=user.name%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+          </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/notifications/books">
+          <div class="setting-title">
+            <h4>Books</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%=user.email%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/notifications/follows">
+          <div class="setting-title">
+            <h4>Follows and Stars</h4>
+          </div>
+          <span class="setting-body">
+            <p>
+              <%if(user.phone){%>
+                <%= user.phone%>
+                <%}%>
+            </p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+        <div class="setting">
+          <a href="/settings/notifications/birthdays">
+          <div class="setting-title">
+            <h4>Birthdays</h4>
+          </div>
+          <span class="setting-body">
+            <p>Legacy Conttact and Deactivation</p>
+          </span>
+          <span class="menu-options"></span>
+        </a>
+        </div>
+      </section>
+      <form action="">
+        <section id="account-sect">
+          <div class="input-holder">
+            <label for="password">
+              <p>Change Password</p>
+              <button class="btn" type="button">change</button>
+              <input type="password" name="password" id="password" value="" />
+            </label>
+          </div>
+          <div class="input-holder">
+            <label for="name">
+              <p>Full Name</p>
+              <button type="button">Set recovery email address</button>
+              <input
+                type="email"
+                name="rec-email"
+                id="rec-email"
+                value="Prince Codes"
+              />
+            </label>
+          </div>
+
+          <div class="input-holder">
+            <label for="appear-offline">
+              <p>Appear Offline</p>
+              <input
+                type="checkbox"
+                name="appear-offline"
+                id="appear-offline"
+              />
+            </label>
+          </div>
+          <div class="input-holder">
+            <label for="website">
+              <p>Blocked Accounts</p>
+            </label>
+          </div>
+        </section>
+      </form>
+
+    </main>
+    <%- include('partials/menu') %>
+  

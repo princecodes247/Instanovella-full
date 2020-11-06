@@ -1,0 +1,53 @@
+main nav:nth-child(1) {
+  margin-left: 0;
+  width: 100vw;
+  padding: 5px 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--sub-color);
+}
+main {
+  padding: 0;
+}
+main form {
+  padding: 0 30px;
+  margin: 10px auto 0;
+  width: 80vw;
+}
+
+img {
+  width: 50px;
+}
+
+input#profile-pic {
+  width: 100%;
+  display: none;
+}
+
+.input-holder {
+  margin: 10px 0 10px;
+  display: flex;
+}
+
+.input-holder label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+#settings-sect {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  justify-content: space-around;
+}
+
+#settings-sect .setting {
+  margin: 10px 0;
+  padding: 20px 20px;
+  border-bottom: 1px solid var(--sub-color);
+  border-bottom: var(--border);
+}
+
+#settings-sect .setting a {
+  text-decoration: none;
+}

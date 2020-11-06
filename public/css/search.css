@@ -1,0 +1,174 @@
+#search-form {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+}
+#search {
+  align-self: center;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15%;
+  color: var(--color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+}
+input input:-internal-autofill-selected {
+  background-color: transparent;
+}
+
+#search-form-btn {
+  right: 0;
+  width: 20%;
+  position: absolute;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+  fill: var(--color);
+  padding-bottom: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#search-options {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-right: 0;
+  text-align: right;
+}
+
+#stories-label,
+#people-label {
+  width: 100%;
+  background: var(--sub-color);
+  opacity: 0.2;
+  transition: 0s;
+  padding: 2px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: var(--border);
+}
+
+#stories-option,
+#people-option {
+  opacity: 0;
+  display: none;
+}
+
+#stories-option:checked + #stories-label,
+#people-option:checked + #people-label {
+  transition: 0.6s all;
+  opacity: 1;
+}
+
+#results {
+  min-height: 50vh;
+}
+
+#books,
+#people {
+  transition: height 1s;
+}
+
+.list-item {
+  background-color: var(--sub-color);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  opacity: 1;
+  height: 7em;
+  overflow: hiden;
+  border: var(--border);
+}
+
+.list-item a {
+  text-decoration: none;
+}
+
+.list-item .pic {
+  height: 100%;
+
+  margin-right: 30px;
+}
+.list-item .pic img {
+  height: 100%;
+}
+
+.list-item .metrics {
+  display: flex;
+}
+
+.list-item a .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 20px;
+}
+
+.list-item .details p {
+  margin-right: 10px;
+}
+
+.list-item .title {
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-item .genre {
+  font-size: smaller;
+}
+
+#results #people .person {
+  background-color: var(--sub-color);
+  opacity: 0.9;
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  height: 7em;
+  overflow: hidden;
+}
+
+main::before {
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.cat-item {
+  display: block;
+  height: 40px;
+  width: 100%;
+  background: var(--sub-color);
+  opacity: 0.9;
+  margin-bottom: 5px;
+  padding: 8px 10px;
+}
+.cat-item {
+  text-decoration: none;
+  text-transform: capitalize;
+  border: var(--border);
+}
+
+#categories-sect .cat-item:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+#categories-sect .cat-item:last-child {
+  border-radius: 0px 0px 10px 10px;
+}

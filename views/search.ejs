@@ -1,0 +1,120 @@
+
+    <title>Search</title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/form.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/search.css"
+      type="text/css"
+      media="all"
+    />
+  </head>
+ 
+  
+    <%- include('partials/header') %>
+    <main>
+      <form id="search-form" action="/search" method="get" accept-charset="utf-8">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search..."
+          value=""
+        />
+        <button
+          type="submit"
+          style="background-color: transparent"
+          class="btn form-btn"
+          name="search-form-btn"
+          id="search-form-btn"
+          value=""
+          >
+          <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        >
+          <path
+            d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z"
+          />
+        </svg>
+        </button>
+        </form>
+            <div id="search-options">
+              <input type="radio" name="search-option" id="stories-option" checked />
+              <label id="stories-label" for="stories-option">Stories</label>
+      
+              <input type="radio" name="search-option" id="people-option" />
+              <label id="people-label" for="people-option">People</label>
+            </div>
+      <section id="results">
+        <div id="result-list">
+          <div id="books">
+          <%if(books.length !== 0){%>
+            <% books.forEach(book => {%>
+              <div class="list-item book">
+                <a href="/books/<%= book.id%>" class="pic">
+                  <img src="<%=book.coverURL%>" alt="">
+                </a>
+                <a href="/books/<%= book.id%>">
+
+                  <span class="details">
+                    <span class="metrics">
+                      <p><sub><%=book.stars.length%></sub></p>
+                    <p><sub><%=book.reads.length%></sub></p>
+                    
+                    </span>  
+                    <span class="title"><%=book.title%></span>
+                    <span class="genre"><%=book.author%></span>
+                    <span class="genre"><%=book.genre%></span>
+                  </span>
+                </a>
+              </div>
+              <%})} else {%>
+                <p>No results</p>
+                <%}%>
+              </div>
+
+          <div class="none" id="people">
+          <%if(people.length !== 0){%>
+            <% people.forEach(person => {%>
+
+
+                    <div class="list-item person">
+                      <a href="/users/<%= person.id%>" class="pic">
+                        <img src="<%=person.coverURL%>" alt="">
+                      </a>
+                      <a href="/users/<%= person.id%>">
+      
+                        <span class="details">
+                          <span class="name"><%=person.name%></span>
+                            <span class="metrics">
+                              <p><sub>Followers: <%=person.followers.length%></sub></p>
+                            <p><sub>Following: <%=person.following.length%></sub></p>
+                            <p><sub>Books: <%=person.books.length%></sub></p>
+                            
+                            </span>
+                        </span>
+                        
+                      </a>
+                    </div>
+                    
+                    <%})} else {%>
+                      <p>No results</p>
+                      <%}%>
+                    </div>
+        </div>
+      </section>
+      <h2>Browse Categories</h2>
+      <section id="categories-sect">
+        <% genres.forEach(genre =>{%>
+          <a class="cat-item" href="/search/genres/<%=genre%>"><div ><%= genre%></div></a>
+          <%})%>
+      </section>
+    </main>
+    <%- include('partials/menu') %>
+    <script src="/js/search.js"></script>
+
