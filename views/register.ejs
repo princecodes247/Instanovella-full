@@ -6,17 +6,17 @@
 <header style="max-height: 8vh">Instanovella</header>
 <main style="padding: 0; width: 100vw; height: 81vh; min-height: 400px">
   <section
-    class="intro"
     style="
-      padding: 0;
+      padding: 120px 0 0 0;
       width: 100vw;
-      height: 82vh;
+      height: 100%;
       display: flex;
+      flex-flow: column nowrap ;
       justify-content: center;
       align-items: center;
     "
   >
-    <h1 style="height: 130px">Sign Up</h1>
+    <h1 >Sign Up</h1>
     <%- include('partials/messages') %>
     <form id="signup-form" action="/users/register" method="post">
       <section id="sect-1">
@@ -40,9 +40,11 @@
         placeholder="Confirm Password"
         value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
       />
-      <input class="btn form-btn next-btn" type="button" value="Next" />
+      
+      <input class="btn form-btn next-btn" type="submit" value="Submit" />
       </section>
       <section id="sect-2" class="none">
+        <input class="btn form-btn next-btn" type="button" value="Next" />
         <input type="date" name="birthday" id="birthday">
         <input class="btn form-btn next-btn" type="button" value="Next" />
       </section>
@@ -65,5 +67,5 @@
   </section>
 </main>
 
-<script src="/js/signup.js"></script>
+<scrit src="/js/signup.js"></scrit>
   

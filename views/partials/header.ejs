@@ -1,7 +1,7 @@
 <body class="container <%= user.details.theme%>">
   <header>
     <div id="nav-logo-and-links">
-      <div class="logo"></div>
+      <div class="logo"><p><%= page %></p></div>
       <div class="nav-top-links">
         <a href="/search">
           <div class="nav-links" id="search-btn">
@@ -19,12 +19,16 @@
           </div>
         </a>
         <a href="/users/<%= user.id%>">
-          <div class="nav-links" id="user-btn"></div>
+          <div
+            class="nav-links"
+            id="user-btn"
+            style="background-image: url('<%= user.avatarURL%>')"
+          ></div>
         </a>
       </div>
     </div>
     <nav>
-      <a href="/dashboard">
+      <a href="/home">
         <div class="nav-links" id="home-btn">
           <svg
             width="24"

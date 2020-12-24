@@ -1,5 +1,4 @@
 form {
-  height: 50%;
   width: 80vw;
   display: flex;
   flex-direction: column;
@@ -78,4 +77,12 @@ form textarea {
 textarea {
   font-family: Montserrat;
   font-size: 0.7em;
+}
+
+form section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

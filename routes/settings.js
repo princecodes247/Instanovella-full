@@ -27,8 +27,9 @@ router.get("/themes", ensureAuthenticated, (req, res) =>
 
 router.get("/themes/:theme", ensureAuthenticated, (req, res) => {
   if (themes.includes(req.params.theme)) {
+    console.log("reach");
     User.findById(req.user.id).then((user) => {
-      user.details.theme = "scifi";
+      user.details.theme = req.params.theme;
       user.markModified("details");
       user.save().catch((err) => console.log(err));
       res.json({

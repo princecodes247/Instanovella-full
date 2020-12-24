@@ -14,23 +14,25 @@ header {
   padding: 0 0px 0 0px;
   padding-left: 0;
   z-index: 4;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 
   /* Fixes the issue of page scrolling horizontally */
   overflow-x: hidden;
   max-width: 100%;
   border-bottom: var(--border);
+
   transition: background 1.1s;
 }
 
 #nav-logo-and-links {
-  width: 90%;
+  width: 85%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding-left: 2.5vw;
-  padding-right: 2vw;
+  padding-left: 0vw;
+  padding-right: 0vw;
+  max-width: 750px;
 }
 
 .logo {
@@ -38,9 +40,12 @@ header {
   width: 50%;
   max-width: 150px;
   height: 40px;
-  background-image: url("../assets/logo.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.3em;
+  text-transform: capitalize;
+  padding-left: 0.5vw;
 }
 
 .nav-top-links {
@@ -58,6 +63,7 @@ nav {
   padding: 0;
   margin: 0 auto;
   min-height: 40px;
+  max-width: 750px;
 }
 
 .nav-links {
@@ -68,6 +74,9 @@ nav {
 }
 
 #menu-btn {
+  position: relative;
+  top: 0;
+  left: 0;
   z-index: 6;
 }
 
@@ -81,9 +90,9 @@ nav {
 }
 
 #user-btn {
-  background: url("../assets/user1.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 120%;
   border-radius: 50%;
   height: 1.5em;
   width: 1.5em;

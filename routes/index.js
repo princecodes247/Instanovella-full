@@ -7,8 +7,8 @@ const Book = require("../models/Book");
 router.get("/", forwardAuthenticated, (req, res) => res.render("welcome"));
 
 // Dashboard
-router.get("/dashboard", ensureAuthenticated, (req, res) =>
-  res.render("dashboard", {
+router.get("/home", ensureAuthenticated, (req, res) =>
+  res.render("home", {
     user: req.user,
   })
 );

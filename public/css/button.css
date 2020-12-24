@@ -24,8 +24,6 @@
   opacity: 0.8;
 }
 .story .card:hover {
-  -webkit-animation: puff-out-ver 0.9s cubic-bezier(0.165, 0.84, 0.44, 1) both;
-  animation: ping 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) both;
 }
 
 .ping:hover {

@@ -31,6 +31,7 @@ main {
   position: relative;
   height: 20vh;
   min-height: 100px;
+  padding: 5px;
   background: var(--bg);
   border-radius: 10px;
   border: thin solid var(--color);
@@ -39,6 +40,8 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
 .theme-btn:hover {
@@ -47,7 +50,7 @@ main {
 
 .theme-btn div:nth-child(1) {
   height: 40%;
-  width: 80%;
+  width: 100%;
   background: var(--nav-color);
   color: var(--color);
   border: thin solid var(--color);
@@ -69,4 +72,5 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  text-transform: capitalize;
 }

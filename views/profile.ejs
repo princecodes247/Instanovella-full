@@ -8,16 +8,22 @@
       media="all"
     />
     <link rel="stylesheet" href="/css/form.css" />
+    <link
+  rel="stylesheet"
+  href="/css/search.css"
+  type="text/css"
+  media="all"
+/>
     <link rel="stylesheet" href="/css/profile.css" />
   </head>
   
-    <%- include('partials/header') %>
+    <%- include('partials/header', { page: "Profile"}) %>
     <main>
       <section class="user-info">
         <nav id="user-settings"></nav>
         <div id="user-details">
           <div style="overflow: hidden" class="user-pic">
-            <img src="/assets/user_icon.png" alt="1" />
+            <img src="<%= person.avatarURL %>" alt="" />
           </div>
 
           <h3><%= person.name %></h3>
@@ -65,6 +71,8 @@
 
         <div class="stories-by">
           <h2>Stories By</h2>
+          <div id="books">
+            
           <%if(person.books.length !== 0){%>
             <h5><%= person.books.length %> published stories</h5>
               <% person.books.forEach(book => {%>
@@ -89,7 +97,7 @@
                 <%})} else {%>
                   <p>No published stories</p>
                   <%}%>
-            
+          </div>
         </div>
         <div class="following"></div>
         <div class="share"></div>
@@ -99,7 +107,7 @@
       <article id="messages-cont">
         <form action="<%=person.id%>/sendmessage" method="POST" class="send-message-cont">
           <div class="user-pic">
-            <img src="/assets/user_icon.png" alt="1" />
+            <img src="<%= user.avatarURL%>" alt="1" />
           </div>
           <textarea
             name="message"

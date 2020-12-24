@@ -13,13 +13,15 @@ router.get("/login", forwardAuthenticated, (req, res) => res.render("login"));
 router.get("/register", forwardAuthenticated, (req, res) =>
   res.render("register")
 );
-
+//, bio, gender, birthday
+//|| !gender || !birthday
+//      bio,gender,birthday,
 // Register
 router.post("/register", (req, res) => {
-  const { name, email, password, password2, bio, gender, birthday } = req.body;
+  const { name, email, password, password2 } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2 || !gender || !birthday) {
+  if (!name || !email || !password || !password2) {
     errors.push({ msg: "Please enter all fields" });
   }
 
@@ -38,9 +40,6 @@ router.post("/register", (req, res) => {
       email,
       password,
       password2,
-      bio,
-      gender,
-      birthday,
     });
   } else {
     User.findOne({ $or: [{ email: email }, { name: name }] }).then((user) => {
@@ -61,9 +60,6 @@ router.post("/register", (req, res) => {
           details: {
             authority: 3,
             theme: "light",
-            bio,
-            gender,
-            birthday,
             appearOffline: false,
           },
         });
@@ -83,7 +79,7 @@ router.post("/register", (req, res) => {
                   if (err) {
                     console.log(err);
                   }
-                  res.redirect("/dashboard");
+                  res.redirect("/home");
                 });
               })
               .catch((err) => console.log(err));
@@ -97,7 +93,7 @@ router.post("/register", (req, res) => {
 // Login
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/dashboard",
+    successRedirect: "/home",
     failureRedirect: "/users/login",
     failureFlash: true,
   })(req, res, next);

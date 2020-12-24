@@ -33,22 +33,77 @@ const Book = require("../models/Book");
 //Load user model
 const User = require("../models/User");
 
+router.get("/getgenres", ensureAuthenticated, (req, res) => {
+  Book.distinct("genre").then((genres) => {
+    res.json(genres);
+  });
+});
+
 //Get a list of all books particular
 router.get("/", ensureAuthenticated, (req, res) => {
-  console.log("connected");
-  let { skip = 0, limit = 10, listGenre = "all", sort = "des" } = req.query;
-  skip = Number(skip);
-  limit = Number(limit);
-  Book.aggregate([
-    {
-      $group: {
-        _id: {},
-      },
-    },
-  ]);
-  Book.find().then((books) => {
-    res.json(books);
-  });
+  let {
+    first = false,
+    limit = 5,
+    genre = "all",
+    order = "stars.length()",
+    sort = "des",
+    page = 1,
+  } = req.query;
+  page = Math.abs(Number(page) || 1);
+  limit = Math.abs(Number(limit) || 5);
+  limit = limit > 50 ? 50 : limit;
+
+  if (first) {
+    Promise.all([
+      Book.countDocuments(),
+      Book.find()
+        .sort({ stars: 1 })
+        .limit(1)
+        .exec(),
+    ]).then(([total, books]) => {
+      res.json({
+        total,
+        books
+      });
+    });
+  }
+
+  if (genre === "all") {
+    Promise.all([
+      Book.countDocuments(),
+      Book.find()
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .sort({ stars: 1 })
+        .exec(),
+    ]).then(([total, books]) => {
+      res.json({
+        total,
+        books,
+        hasMore: total - limit * page > 0,
+      });
+    });
+  } else {
+    Promise.all([
+      Book.countDocuments(genre),
+      Book.find({ genre })
+        .skip((page - 1) * limit)
+        .limit(limit)
+
+        .exec(),
+    ]).then(([total, books]) => {
+      console.log(books);
+      res.json({
+        total,
+        books,
+        hasMore: total - limit * page > 0,
+      });
+    });
+  }
+
+  //   .then((books) => {
+  //     res.json(books);
+  //   });
 });
 
 //Get a particular Book
@@ -129,7 +184,7 @@ router.post("/create", ensureAuthenticated, (req, res) => {
 
               user
                 .save()
-                .then((user) => console.log(user))
+
                 .catch((err) => console.log(err));
 
               req.flash(
@@ -159,7 +214,6 @@ router.get("/:id/add", ensureAuthenticated, (req, res) => {
           user: req.user,
           book,
         });
-        console.log(book);
       }
     })
     .catch((err) => {
@@ -182,7 +236,6 @@ router.post("/:id/add", ensureAuthenticated, (req, res) => {
           user: req.user,
           book,
         });
-        console.log(book);
       })
       .catch((err) => console.log(err));
   }).catch((err) => {
@@ -242,7 +295,6 @@ router.get("/:id/:chapter", ensureAuthenticated, (req, res) => {
         chapterTitle: book.chapters[chapter].title,
         story: book.chapters[chapter].story,
       });
-      console.log(book);
     })
     .catch((err) => {
       console.log(err);

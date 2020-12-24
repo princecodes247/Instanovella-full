@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/navbar.css" />
+<title>Instanovella</title>
+</head>
+
+
+
+  <%- include('partials/header', { page: "Home"}) %>
+  <div class="loader ">
+    <h1 class="tracking-in-expand">Instanovella</h1>
+  </div>
+<main>
+  <section class="intro">
+    <div id="welc">
+      <h2>Welcome, <%= user.name %></h2>
+    </div>
+    <div class="card">
+      <div class="top">
+        <img src="test.jpg" alt="" />
+        <div class="title">
+          <h4>Test</h4>
+          <h5>Comedy</h5>
+        </div>
+      </div>
+      <div class="bottom">
+        <p class="desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sed aliquam nulla.
+        </p>
+      </div>
+    </div>
+  </section>
+  <article data-sect-name="Trending" class="sect" id="sec1">
+    <div class="stories">
+      
+    </div>
+  </article>
+  <section id="categories">
+    <h2>Categories</h2>
+
+  </section>
+  <p id="loadmore">Load</p>
+</main>
+
+<%- include('partials/menu') %>
+<script src="/js/loader.js"></script>
+    <script src="/js/stories.js" type="text/javascript" charset="utf-8"></script>
+  
