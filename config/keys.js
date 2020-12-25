@@ -1,6 +1,6 @@
-dbPassword = "mongodb+srv://princecodes:princecodesatadmin@cluster0.vj5vg.mongodb.net/?retryWrites=true&w=majority" || 'mongodb://127.0.0.1/instanovella';
-//dbPassword = 'mongodb+srv://princecodes:' + encodeURIComponent('princecodesatadmin') + '@.mongodb.net/test?retryWrites=true';
-//dbPassword = "mongodb+srv://princecodes:princecodesatadmin@cluster0.vj5vg.mongodb.net/?retryWrites=true&w=majority"
+var dotenv = require('dotenv').load({ silent: true });
+
+dbPassword = process.env.MONGODB_URI || 'mongodb://127.0.0.1/instanovella';
 
 
 module.exports = {
