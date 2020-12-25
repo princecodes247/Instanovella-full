@@ -1,6 +1,5 @@
-var dotenv = require('dotenv').load({ silent: true });
-
-dbPassword = process.env.MONGODB_URI || 'mongodb://127.0.0.1/instanovella';
+dbPassword = process.env.MONGODB_URI;
+//|| 'mongodb://127.0.0.1/instanovella';
 
 
 module.exports = {
