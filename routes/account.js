@@ -27,19 +27,22 @@ router.post("/username", ensureAuthenticated, (req, res) => {
     if (!user) {
       console.log("no such user");
     }
+    // Check if the new username is taken
 
-    // Match password
-    bcrypt.compare(password, user.password, (err, isMatch) => {
-      if (isMatch) {
-        user.name = username;
-        user
-          .save()
-          .then((user) => console.log(user))
-          .catch((err) => console.log(err));
-      } else {
-        console.log("password does not match");
-      }
-    });
+    else {
+      // Match password
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (isMatch) {
+          user.name = username;
+          user
+            .save()
+            .then((user) => console.log(user))
+            .catch((err) => console.log(err));
+        } else {
+          console.log("password does not match");
+        }
+      });
+    }
   });
 });
 

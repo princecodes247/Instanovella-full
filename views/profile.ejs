@@ -59,7 +59,7 @@
             <span></span>
           </label>
         </nav>
-        <article id="about">
+        <article id="about-cont">
           <div class="desc close">
             <p>
               <%=person.details.bio%>
@@ -104,7 +104,7 @@
         <div class="last-message"></div>
         <div class="reading-list"></div>
       </article>
-      <article id="messages-cont">
+      <article id="messages-cont" class="hidden">
         <form action="<%=person.id%>/sendmessage" method="POST" class="send-message-cont">
           <div class="user-pic">
             <img src="<%= user.avatarURL%>" alt="1" />
@@ -253,4 +253,5 @@
     </main>
     <%- include('partials/menu') %>
     <script src="/js/follow.js"></script>
+    <script src="/js/aboutnav.js"></script>
   

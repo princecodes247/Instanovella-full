@@ -157,11 +157,12 @@ img {
   transition: max-height 2s ease-out;
 }
 
-#about {
+#about-cont {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 30px;
+  overflow: hidden;
 }
 
 #about-sect .desc.close {
@@ -176,6 +177,7 @@ img {
 
 #messages-cont {
   text-align: center;
+  overflow: hidden;
 }
 
 .send-message-cont {
@@ -351,4 +353,8 @@ img {
 
 .reply .reply-text .reply-details h5 {
   margin-left: 5px;
+}
+
+.hidden {
+  height: 0vh;
 }
