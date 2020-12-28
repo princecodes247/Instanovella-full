@@ -171,11 +171,25 @@ router.post("/:id/message/:index/reply", ensureAuthenticated, (req, res) => {
 router.get("/:id/follow", ensureAuthenticated, (req, res) => {
   let userId = req.params.id;
   if (userId !== req.user.id) {
-    User.findById(userId)
-      .then((user) => {
-        if (!user.followers.includes(req.user.id)) {
-          user.followers.push(req.user.id);
-          user.save().then(
+    Promise.all([
+    User.findById(userId),
+    User.findById(req.user.id)
+    ]
+    ).then(([user, person]) => {
+      // console.table(`user = ${user}
+      // ________________
+      // person = ${person}
+      // `);
+      // user is the owner of the profile
+      // person is the one following
+        if (!user.followers.includes(person.id)) {
+          user.followers.push(person.id);
+          person.following.push(user.id);
+          Promise.all([
+            user.save(),
+            person.save()
+          ]
+          ).then(
             res.json({
               followers: user.followers.length,
               message: true,
@@ -183,21 +197,20 @@ router.get("/:id/follow", ensureAuthenticated, (req, res) => {
           );
         } else {
           let index = user.followers.indexOf(req.user.id);
-          if (index > -1) {
+            person.following.splice(index, 1);
             user.followers.splice(index, 1);
-            user.save().then(() => {
-              res.json({
-                followers: user.followers.length,
-                message: false,
+            Promise.all([
+              user.save(),
+              person.save()
+            ]).then(() => {
+                res.json({
+                  followers: user.followers.length,
+                  message: true,
+                });
               });
-            });
-          } else {
-            res.json({
-              followers: user.followers.length,
-              message: true,
-            });
-          }
         }
+        
+
       })
       .catch((err) => {
         console.log(err);

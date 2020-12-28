@@ -1,6 +1,7 @@
 const userUrl = window.location.href;
 const followBtn = document.querySelector("#follow-btn");
 const followers = document.querySelector("#followers #followers-num");
+const following = document.querySelector("#following #following-num");
 function follow(id) {
   followBtn.disabled = true;
   followBtn.classList.add("disabled");
@@ -8,7 +9,9 @@ function follow(id) {
   fetch(id + "/follow")
     .then((res) => res.json())
     .then((data) => {
-      followers.innerText = data.followers || followers.innerText;
+      followers.innerText = data.followers;
+      following.innerText = data.following ? data.following : following.innerText;
+      console.log(data);
       if (data.message) {
         followBtn.value = "Unfollow";
       } else {

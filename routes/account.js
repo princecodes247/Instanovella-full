@@ -30,18 +30,31 @@ router.post("/username", ensureAuthenticated, (req, res) => {
     // Check if the new username is taken
 
     else {
-      // Match password
-      bcrypt.compare(password, user.password, (err, isMatch) => {
-        if (isMatch) {
-          user.name = username;
-          user
-            .save()
-            .then((user) => console.log(user))
-            .catch((err) => console.log(err));
-        } else {
-          console.log("password does not match");
+      User.findOne({
+        name: username,
+      }).then(person => {
+
+        if (!person) {
+          // Match password
+          bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (isMatch) {
+              user.name = username;
+              user
+                .save()
+                .then((user) => {
+                  res.render("profile", {
+                    user: req.user,
+                    person: user
+                  }
+                  )
+                })
+                .catch((err) => console.log(err));
+            } else {
+              console.log("password does not match");
+            }
+          });
         }
-      });
+      })
     }
   });
 });

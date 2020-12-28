@@ -128,6 +128,7 @@ router.post("/create", ensureAuthenticated, (req, res) => {
   let bookAuthor = req.user;
   const { title, genre, desc, tags } = req.body;
 
+
   let errors = [];
 
   if (!title || !genre || !desc) {
@@ -243,9 +244,10 @@ router.post("/:id/add", ensureAuthenticated, (req, res) => {
   });
 });
 
+
+// Star a book
 router.get("/:id/star", ensureAuthenticated, (req, res) => {
   let bookId = req.params.id;
-
   Book.findById(bookId)
     .then((book) => {
       if (!book.stars.includes(req.user.id)) {

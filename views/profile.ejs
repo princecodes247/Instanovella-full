@@ -34,8 +34,8 @@
             <p><%= person.books.length %></p>
             <p>Works</p>
           </span>
-          <span>
-            <p><%= person.following.length %></p>
+          <span id="following">
+            <p id="following-num"><%= person.following.length %></p>
             <p>Following</p>
           </span>
           <span id="followers">
@@ -43,7 +43,9 @@
             <p>Followers</p>
           </span>
         </div>
+        <%if (person.id !== user.id ){%>
         <input class="btn" id="follow-btn" type="button" value=<%=person.followers.includes(user.id) ? "Unfollow" : "Follow" %> />
+        <%}%>
       </section>
       <section id="about-sect">
         <nav class="navi">
